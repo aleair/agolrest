@@ -17,14 +17,15 @@
      "esri/config",
       "esri/Map",
       "esri/views/MapView",
-      "esri/Graphic",  
-      "esri/layers/GraphicsLayer"   
-], function(esriConfig,Map, MapView, Graphic, GraphicsLayer) {
+      "esri/Graphic",
+      "esri/layers/GraphicsLayer",
+      "esri/layers/FeatureLayer"
 
-      esriConfig.apiKey = "AAPKed785add7544444798f23c8a620bf44bqpY0sC9tn9LLhvuTTX3xYHua1ZpeVt40vQwJwnOcshlTcp30Mt_aRIIehBVeT4SR";
-      const map = new Map({
-        basemap: "arcgis-topographic" // Basemap layer
-      });
+ ], function (esriConfig,Map, MapView, Graphic, GraphicsLayer, FeatureLayer) {
+esriConfig.apiKey = "AAPK2cb19acc98eb406b80346e85af5aa1ffagWp07_WJVQlFAY2XL6xGrQ86USz9K6UzB1OaBd37PTIlYdHTo04S0-F9ETbr-dC";
+const map = new Map({
+basemap: "arcgis-topographic" // Basemap layer
+});
 
       const view = new MapView({
           map: map,
@@ -42,19 +43,38 @@
         };
        
         const simpleMarkerSymbol = {  
-          type: "simple-marker",  
+          type: "simple-marker",
+          style: "square",  
           color: [0, 0, 139],  // Color of blues rock
           outline: {  
             color: [255, 255, 255], // White  
             width: 1
           }  
         };
+        const popupTemplate = {
+          title: "{Name}",
+          content: "{Description}"
+       }
+       const attributes = {
+          Name: "Stevie Ray Vaughan Statue",
+          Description: "A bronze sculpture of Stevie Ray Vaughan by Ralph Helmick"
+       }
+
         const pointGraphic = new Graphic({  
           geometry: point,  
-          symbol: simpleMarkerSymbol  
+          symbol: simpleMarkerSymbol,
+        
+        attributes: attributes,
+        popupTemplate: popupTemplate  
+          
         });
         graphicsLayer.add(pointGraphic);
-         
+        const usaeduLayer = new FeatureLayer({
+          url: "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/Colleges_and_Universities_View/FeatureServer"
+          });
+
+
+        map.add(usaeduLayer);     
 
     });
   </script>

@@ -116,8 +116,7 @@ const airportLabels = {
       url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports/FeatureServer",
       renderer: airportRenderer, //calling the icon
 
-      definitionExpression: "Fac_Type = 'AIRPORT'", //adding sql to filter for airports
-      definitionExpression: "Fac_Type = 'HELIPORT'", //adding sql to filter for airports
+      definitionExpression: "Fac_Type = 'AIRPORT' OR Fac_Type = 'HELIPORT'", //adding sql to filter for airports
     });
 
     // Adding the feature layer to the map

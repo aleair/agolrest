@@ -23,8 +23,9 @@
     "esri/geometry/Point",
     "esri/symbols/SimpleMarkerSymbol",
     "esri/widgets/Popup",
-    "esri/PopupTemplate"
-  ], function (esriConfig, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, Point, SimpleMarkerSymbol, Popup, PopupTemplate) {
+    "esri/PopupTemplate",
+    "esri/widgets/Editor"
+  ], function (esriConfig, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, Point, SimpleMarkerSymbol, Popup, PopupTemplate, Editor) {
     esriConfig.apiKey = "AAPK2ea4bdf5d5574c329b85d88751414dd1yQfekPkVL0PzP258W8V8fsmldoY1ZzO7F41KzMzfSjLsfVyRNwlYkb9-VZUCZWPN";
     const map = new Map({
       basemap: "streets" // Basemap layer
@@ -36,7 +37,14 @@
       zoom: 13, // Zoom level
       container: "viewDiv" // Div element
     });
+    // Create an instance of the Editor widget
+    var editor = new Editor({
+      view: view
+    });
 
+// Add the widget to the top-right corner of the view
+    view.ui.add(editor, "top-right");
+    
     const graphicsLayer = new GraphicsLayer();  
     map.add(graphicsLayer);
 

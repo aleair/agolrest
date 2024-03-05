@@ -130,6 +130,16 @@ const airportLabels = {
 
     // Adding the feature layer to the map
     map.add(airportLayer);
+    const myAirports = new FeatureLayer({
+      url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/My_AirportsAFL/FeatureServer",
+      
+      //adding the popup here
+      outFields: ["AirportCode"],
+     
+     });
+     
+     //adding the feature layer to the map
+     map.add(myAirports);
   });
   </script>
 

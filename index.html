@@ -30,7 +30,6 @@
     const map = new Map({
       basemap: "streets" // Basemap layer
     });
-    
 
     const view = new MapView({
       map: map,
@@ -38,14 +37,7 @@
       zoom: 13, // Zoom level
       container: "viewDiv" // Div element
     });
-    // Create an instance of the Editor widget
-    var editor = new Editor({
-      view: view
-    });
 
-// Add the widget to the top-right corner of the view
-    view.ui.add(editor, "top-right");
-    
     const graphicsLayer = new GraphicsLayer();  
     map.add(graphicsLayer);
 
